@@ -76,3 +76,11 @@ h4 {
     color: #FFFFFF;
     background-color: #C25100;
 }
+
+.page-footer {
+    background-color: #C25100;
+    font-family: 'Barlow';
+    margin-top: 0;
+    margin-bottom: 40px;
+    padding: 20px 20px 20px 40px;
+}

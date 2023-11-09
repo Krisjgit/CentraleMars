@@ -12,16 +12,22 @@
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
 <body>
-    <div class="page-header">
+    <header class="page-header">
         <h1><a href="/">Ecole Centrale de Mars</a></h1>
-    </div>
+    </header>
+
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
+
             {% block content %}
             {% endblock %}
             </div>
         </div>
     </div>
+    <footer class="page-footer">
+        <hr>
+        Joubi Kris CC-BY-NC-SA
+    </footer>
 </body>
 </html>
