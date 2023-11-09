@@ -1,0 +1,24 @@
+#  Copyright Joubi Kris (c) 2023.
+#
+
+
+{% extends 'blog/base.html' %}
+{% block content %}
+     <article class="post">
+            <h2>{{ room.name }}</h2>
+            <time class="date">
+                Créee le {{ room.created_date  }}
+            </time>
+            <br>Utilisée par : <a  href="">{{room.user}}</a>
+            <p>{{ room.description|linebreaksbr }}</p>
+
+            <p>La salle est actuellement
+                {% if not room.available %}
+                    non
+                {% endif %}
+                disponible
+                Ceci est un double test
+            </p>
+     </article>
+{% endblock %}
+
