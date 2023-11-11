@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "CentraleMars/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "CentraleMars/wsgi.py"
+    }
+  ]
+}
