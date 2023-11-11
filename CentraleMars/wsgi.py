@@ -16,3 +16,4 @@ if os.environ.get('ENV') == 'production':
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CentraleMars.settings')
 
 application = get_wsgi_application()
+app = application
