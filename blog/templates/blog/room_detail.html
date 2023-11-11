@@ -1,20 +1,33 @@
 
 {% extends 'blog/base.html' %}
 {% block content %}
+{% load static %}
      <article class="post">
             <h2>{{ room.name }}</h2>
-            <time class="date">
-                Créee le {{ room.created_date  }}
-            </time>
-            <br>Utilisée par : <a  href="">{{room.user}}</a>
-            <p>{{ room.description|linebreaksbr }}</p>
-         
-            <p>La salle est actuellement
-                {% if not room.available %}
-                    non
-                {% endif %}
-                disponible
-            </p>
+            <time class="date">Créée le {{ room.created_date  }} par : <a  href="/admin/auth/user/">{{room.user}}</a>.</time>
+
+            {% if room.available %}
+                <p class="valid">
+                    Actuellement disponible ({{ room.capacity }} places maximum).
+                </p>
+            {% else %}
+                <p class="invalid">
+                    Actuellement non disponible ({{ room.capacity }} places maximum).
+                </p>
+            {% endif %}
+
+         <p><b>Description : </b>{{ room.description|linebreaksbr }}</p>
+         <p><b>Campus : </b>{{ room.campus }}</p>
+
+            {% if persons %}
+                <b>Utilisée par :</b>
+                {% for person in persons%}
+                    <a  href="{% url 'person_detail' pk=person.pk %}">{{person.name}}</a>,
+                {%endfor%}
+            {%else%}
+                Aucune personne n'utilise cette salle actuellement.
+            {% endif %}
+
      </article>
 {% endblock %}
 

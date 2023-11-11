@@ -1,0 +1,48 @@
+
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load static %}
+
+     <article class="post">
+            {% if message %}
+                {% if warning%}
+                    <div class="warning">
+                      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                      <strong>Attention !</strong> {{message}}
+                    </div>
+                {% else %}
+                    <div class="info">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong>Information : </strong> {{message}}
+                    </div>
+                {% endif %}
+            {% endif %}
+
+
+            <div class = "col2">
+                <div class = "noCut">
+                    <h2>{{ person.name }}</h2>
+                    <div>
+                        <img src="{% static person.photo %}"
+                         alt="Photo de profil."
+                         height="96pt"/>
+                    </div>
+                    <time class="date">Créée le {{ person.created_date  }} par : <a  href="/admin/auth/user/">{{person.user}}.</a></time>
+                    <p><b>Lieu actuel : </b><a  href="{% url 'room_detail' pk=person.location.pk %}">{{person.location}}</a></p>
+                    <p><b>Planète actuelle : </b>{{person.planet}} </p>
+                </div>
+
+                 <div class = "noCut">
+                    <form method="POST" class="post-form">{% csrf_token %}
+                        <b>Déplacer :</b>
+                        {{ form.as_ul }}
+                        <br>
+                        <button type="submit" class="btn btn-default">Valider</button>
+                        <br>
+                        <a href="{% url 'home' %}">Retour à l'accueil</a>
+                    </form>
+                 </div>
+            </div>
+     </article>
+{% endblock %}
+

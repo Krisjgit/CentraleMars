@@ -13,21 +13,36 @@
     </head>
 <body>
     <header class="page-header">
-        <h1><a href="/">Ecole Centrale de Mars</a></h1>
+        <h1>
+            <a href="/">
+                <img src="{% static 'images/CentraleMars.png' %}"
+                 alt="Logo de Centrale Mars"
+                 height="96pt"/>
+                Ecole Centrale de Mars
+            </a>
+        </h1>
     </header>
 
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
+    <nav class="sidebar">
+         <ul>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/room-list/">Liste des salles</a></li>
+          <li><a href="/person-list/">Liste des personnes</a></li>
+         <li><a href="/admin/">Page administrateur</a></li>
+          <!--
+             <li><a href="contact.asp">Détail d'une salle</a></li>
+              <li><a href="contact.asp">Détail d'une personne</a></li>
+              <li><a href="about.asp">à propos</a></li>
+          -->
+        </ul>
+    </nav>
 
+    <div class="content container">
             {% block content %}
             {% endblock %}
-            </div>
-        </div>
     </div>
     <footer class="page-footer">
-        <hr>
-        Joubi Kris CC-BY-NC-SA
+        Projet CentraleMars, Joubi Kris, novembre 2023, CC-BY-NC-SA 4.0.
     </footer>
 </body>
 </html>

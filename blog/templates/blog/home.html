@@ -4,14 +4,86 @@
   -->
 {% extends 'blog/base.html' %}
 {% block content %}
-    {% for room in rooms %}
-        <article class="post">
-            <h2><a href="{% url 'room_detail' pk=room.pk %}">{{ room.name }}</a></h2>
-            <time class="date">
-                Créee le {{ room.created_date  }}
-            </time>
-            <br>Utilisée par : <a  href="">{{room.user}}</a>
-            <p>{{ room.description|linebreaksbr }}</p>
-        </article>
-    {% endfor %}
+{% load static %}
+    <h1>Accueil</h1>
+    <div class="col2">
+        <div class="noCut">
+          <h2>Description du site</h2>
+
+          <p class="noCut">
+            <h3>Contexte et objectifs</h3>
+                Ce site internet est réalisé par Kris Joubi dans le cadre de sa scolarité à Centrale
+                Méditerannée. Il vise à expérimenter une architechture "modèle - vue - contrôleur" qui serait reliée à
+                une base de données. La seule contrainte est d'implémenter un shéma de données de style 'personnage
+                utilise équippement', où un équippement peut être utilisé par plusieurs personnage et où les personnages
+                ont un attribut qui varie en fonction des équippements qu'ils peuvent être ammenés à utiliser.
+            <h3>Objectifs annexes</h3>
+                Parallèlement, je me suis donné comme objectif de rendre ce site à la fois pratique, beau et drôle. D'une
+                part, j'ai expérimenté le plus possible toutes les subtilités de CSS que j'avais envie d'implémenter.
+                D'autre part, j'ai essayé de faire un code HTML le plus propre possible. Le mot d'ordre était de m'ammuser.
+                Rédigeant cette description à la toute fin de mon projet, je peux attester que le mot d'ordre a été
+                largement respecté.
+            <h3>Architechture et aspect humoristique</h3>
+                Bien entendu, plusieurs éléments du site sont purement humoristiques. Le site est en fait un site
+                regrouppant des utilisateurs (administrateurs), des <i>personnes</i> et des salles. Les <i>personnes</i> peuvent
+                interragir occuper une salle à plusieurs dans la limite de sa capacité. Le site est aussi une parodie de
+                l'ECM dans un futur où après s'être étendue à la méditerannée toute entière, la nouvelle ambition de l'ECM
+                est Mars !
+            <h3>Rétribution</h3>
+                Le code source de ce site a été écrit en Python, Html et CSS en utilisant largement le Framework django.
+                Les photos de profil des utilisateurs sont basées sur des images générées par DALL.E que j'ai modifiées pour
+                les rendre plus jolies. J'ai aussi designé le logo de centrale Mars en me basant sur celui de Centrale
+                Méditerannée. Je souhaite aussi remercier les personnes qui figurent en tant qu'utilisateur ou en tant
+                que <i>personne</i> sur le site.
+
+          </p>
+        </div>
+        <div class="noCut">
+        <h2>Logo</h2>
+        <img src="{% static 'images/CentraleMars.png' %}"
+             alt="Logo de Centrale Mars"
+             height="250pt"/>
+        </div>
+
+        <div class="noCut">
+            <h2>Vue d'ensemble des utilisateurs</h2>
+            <div class="grid">
+                {% for person in persons %}
+                <a href="{% url 'person_detail' pk=person.pk %}">
+                <img class="home-person"
+                     src="{% static person.photo %}"
+                     alt="Photo de profil de {{person.name}}"
+                     height="110pt"/>
+                <!-- <p class="home-person">{{person.name}}</p> -->
+                </a>
+                {%endfor%}
+            </div>
+        </div>
+        <br>
+        <div class="noCut">
+            <h2>Vue d'ensemble des salles</h2>
+            <div class="grid">
+                {% for room in rooms %}
+                <a      class="home-room"
+                        href="{% url 'room_detail' pk=room.pk %}">
+                <p>
+                    {{room.name}}
+                    {% if room.available %}
+                        <div class="valid">
+                            disponible
+                        </div>
+                    {% else %}
+                        <div class="invalid">
+                            non disponible
+                        </div>
+                    {% endif %}
+                </p>
+                <!-- <p class="home-person">{{person.name}}</p> -->
+                </a>
+                {%endfor%}
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}

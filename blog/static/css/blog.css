@@ -2,7 +2,25 @@
 
 
 h1 a, h2 a { color: #ed9524; }
-body { padding-left: 15px; }
+
+body {
+font-family: 'Barlow';
+ }
+ body {
+  background-color: white;
+  color: #000000;
+}
+
+/*
+Je n'arrive pas encore à faire fonctionner le thème sombre comme je voudrais
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #363636;
+    color: white;
+
+  }
+*/
+
 h1 a, h2 a { color: #C25100; font-family: 'Barlow'; }
 
 .page-header {
@@ -20,6 +38,9 @@ h1 a, h2 a { color: #C25100; font-family: 'Barlow'; }
     color: #ffffff;
     font-size: 36pt;
     text-decoration: none;
+}
+.page-header h1 img :{
+    height : 36pt;
 }
 
 h1,
@@ -48,7 +69,7 @@ h4 {
     color: #ffffff;
     float: right;
     font-size: 26pt;
-    margin-right: 20px;
+
 }
 
 .room {
@@ -70,6 +91,7 @@ h4 {
     color: #C25100;
     background: none;
     border-color: #C25100;
+    transition: 0.4s;
 }
 
 .btn-default:hover {
@@ -78,9 +100,120 @@ h4 {
 }
 
 .page-footer {
-    background-color: #C25100;
+    color: #000;
+    background-color: #F2A891;
+    color: #ffffff;
+    font-size: 10pt;
     font-family: 'Barlow';
-    margin-top: 0;
+    margin-top: 40;
     margin-bottom: 40px;
-    padding: 20px 20px 20px 40px;
+    padding-left : 20px;
+}
+
+
+.warning {
+  padding: 20px;
+  background-color: #ff6040;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.info {
+  padding: 20px;
+  background-color: #4060cc;
+  color: ffffff;
+  margin-bottom: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: ffffff;
+  font-weight: bold;
+  float: right;
+  font-size: 25px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: #ff0000;
+}
+
+ul {
+  list-style-type: none;
+  margin: 2.5%;
+  padding: 0;
+  width: 15%;
+  background-color: #F2D7CE;
+  position: fixed;
+  overflow: auto;
+  font-size: 19px;
+  z-index: 0;
+}
+
+.active {
+  background-color: #000000;
+  color: white;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  color : #000000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+
+li a:hover {
+  background-color: #F2A891;
+  color: white;
+}
+
+.container {
+  margin-left: 20%;
+}
+
+.col2 {
+    column-count: 2;
+    column-gap: 40px;
+    column-rule-color : #C25100;
+    column-rule-style : dotted;
+    column-rule-width 2px;
+}
+.noCut {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 20px;
+}
+
+.invalid {
+    color: #FF3028;
+    text-decoration: underline overline #FF3030;
+}
+.valid {
+    text-decoration: underline overline;
+    color: #30ff30;
+}
+
+.home-room:hover {
+    text-decoration:none;
+    display : block;
+    color: #ffffff;
+    background-color : #C25100;
+    transition: 0.4s;
+    text-align: center;
+}
+
+.home-person:hover {
+    display : block;
+    color: #ff0000;
+    background-color : #C25100;
+    transition: 0.4s;
 }

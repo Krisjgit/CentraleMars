@@ -1,0 +1,14 @@
+<!--
+  ~ Copyright Joubi Kris (c) 2023.
+  ~
+  -->
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for person in persons %}
+        <article class="post">
+            <h2><a href="{% url 'person_detail' pk=person.pk %}">{{ person.name }}</a></h2>
+            <time class="date">Crée.e le {{ person.created_date  }} par <a  href="/admin/auth/user/">{{person.user}}</a>.</time>
+            <p>Actuellement dans <a href="{% url 'room_detail' pk=person.location.pk %}">{{ person.location|linebreaksbr }}</a></p>
+        </article>
+    {% endfor %}
+{% endblock %}

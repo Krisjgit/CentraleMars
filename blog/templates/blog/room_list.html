@@ -1,0 +1,26 @@
+<!--
+  ~ Copyright Joubi Kris (c) 2023.
+  ~
+  -->
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for room in rooms %}
+        <article class="post">
+            <h2><a href="{% url 'room_detail' pk=room.pk %}">{{ room.name }}</a></h2>
+
+            {% if room.available %}
+                <div class="valid">
+                    disponible
+                </div>
+            {% else %}
+                <div class="invalid">
+                    non disponible
+                </div>
+            {% endif %}
+
+            <time class="date">Créée le {{ room.created_date  }} par : <a  href="/admin/auth/user/">{{room.user}}</a>.</time>
+
+            <p>{{ room.description|linebreaksbr }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
